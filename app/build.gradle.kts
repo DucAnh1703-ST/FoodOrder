@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.android) version "2.1.0"  // Cập nhật Kotlin version
+
+    id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -45,4 +52,22 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // MaterialDialog
+    implementation(libs.core)
+
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom))
+
+    implementation (libs.firebase.auth.ktx)
+    implementation (libs.firebase.database)
+    implementation (libs.firebase.messaging)
+
+    // Gson
+    implementation (libs.gson)
+
+    // Room database
+    implementation (libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler.v225)
+
 }
