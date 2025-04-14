@@ -1,4 +1,9 @@
 package com.example.foodorder.activity
 
-class FoodDetailActivity {
+import com.example.foodorder.databinding.ActivityFoodDetailBinding
+
+class FoodDetailActivity : BaseActivity() {
+
+    private lateinit var mActivityFoodDetailBinding: ActivityFoodDetailBinding
+
 }

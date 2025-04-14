@@ -70,4 +70,9 @@ dependencies {
     implementation (libs.androidx.room.runtime)
     kapt (libs.androidx.room.compiler.v225)
 
+    // Indicator
+    implementation (libs.circleindicator)
+
+    // Glide load image
+    implementation (libs.glide)
 }
