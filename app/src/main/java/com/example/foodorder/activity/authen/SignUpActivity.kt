@@ -35,6 +35,7 @@ class SignUpActivity : BaseActivity() {
         setupLayoutEmailAndPasswordListener()
     }
 
+//    check email and pass
     private fun onClickValidateSignUp() {
         val strEmail = mActivitySignUpBinding.edtEmail.text.toString().trim { it <= ' ' }
         val strPassword = mActivitySignUpBinding.edtPassword.text.toString().trim { it <= ' ' }
@@ -81,6 +82,7 @@ class SignUpActivity : BaseActivity() {
         }
     }
 
+//    Sign up for a Firebase account
     private fun signUpUser(email: String, password: String) {
         showProgressDialog(true)
         val firebaseAuth = FirebaseAuth.getInstance()
@@ -114,6 +116,7 @@ class SignUpActivity : BaseActivity() {
             }
     }
 
+//    Write user to Firebase Realtime Database
     private fun createUserRTDB(email: String) {
         // Create 1 node on Realtime Database
         val userId = System.currentTimeMillis()
@@ -155,12 +158,7 @@ class SignUpActivity : BaseActivity() {
             mActivitySignUpBinding.edtEmail,
             mActivitySignUpBinding.imgClear
         )
-//        //Layout UserName: Listener focus, clear text icon
-//        GlobalFunction.setupLayoutEditTextWithIconClearListeners(
-//            mActivitySignUpBinding.layoutUserName,
-//            mActivitySignUpBinding.edtUserName,
-//            mActivitySignUpBinding.imgClearUserName
-//        )
+
         //Layout Password: Listener focus
         GlobalFunction.setupLayoutPasswordListeners(
             mActivitySignUpBinding.layoutPassword,

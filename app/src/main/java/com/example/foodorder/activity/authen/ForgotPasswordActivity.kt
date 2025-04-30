@@ -27,6 +27,7 @@ class ForgotPasswordActivity : BaseActivity() {
         setupLayoutEmailListener()
     }
 
+//    check email
     private fun onClickValidateResetPassword() {
         val strEmail = mActivityForgotPasswordBinding.edtEmail.text.toString().trim { it <= ' ' }
         if (isEmpty(strEmail)) {

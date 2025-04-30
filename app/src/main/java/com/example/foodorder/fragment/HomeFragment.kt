@@ -41,12 +41,6 @@ class HomeFragment : Fragment() {
     private lateinit var gridLayoutManager: GridLayoutManager
     private val valueEventListenersMap: MutableMap<String, ValueEventListener> = mutableMapOf()
 
-    private var isLoading = false
-    private var isLastPage = false
-    private var currentPage = 1
-    private var totalPage = 5 // cai nay can xem lai
-
-
     private val mRunnableBanner = Runnable {
         if (mListFoodPopular.isEmpty()) {
             return@Runnable
@@ -73,10 +67,12 @@ class HomeFragment : Fragment() {
         return mFragmentHomeBinding.root
     }
 
+//    RecyclerView setup
     private fun initView() {
         if (activity == null) {
             return
         }
+//        Create GridLayoutManager 2 column
         gridLayoutManager = GridLayoutManager(activity, 2)
         mFragmentHomeBinding.rcvFood.layoutManager = gridLayoutManager
         mListFood = mutableListOf()
@@ -90,6 +86,7 @@ class HomeFragment : Fragment() {
 
     }
 
+//    Get Category List from Firebase
     private fun getListCategory() {
         if (activity == null) {
             return
@@ -109,10 +106,12 @@ class HomeFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
 
         }
+//    Every time the data changes, clear the list, parse it into Category, then call displayListCategories()
         ControllerApplication[requireContext()].categoryDatabaseReference.addValueEventListener(categoryValueEventListener)
         valueEventListenersMap["category"] = categoryValueEventListener
     }
 
+//    Show categories
     private fun displayListCategories() {
         val linearLayoutManager = LinearLayoutManager(activity,
             LinearLayoutManager.HORIZONTAL, false)

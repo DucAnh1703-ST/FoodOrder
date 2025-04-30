@@ -10,7 +10,7 @@ interface Constant {
         const val GMAIL = "bangnv.it@gmail.com"
         const val SKYPE_ID = "bangofficial.no1_1" // "live:bangofficial.no1_1"
         const val ZALO_LINK = "https://zalo.me/0356265666"
-        const val FIREBASE_URL = "https://cafeorder-f666-default-rtdb.firebaseio.com"
+        const val FIREBASE_URL = "https://foodorder-479ca-default-rtdb.firebaseio.com"
         const val NAME_PAYMENT_COD = "Thanh toán khi nhận tiền (COD)"
         const val NAME_PAYMENT_WALLET = "Thanh toán bằng Ví MoMo"
         const val TYPE_PAYMENT_COD = 1

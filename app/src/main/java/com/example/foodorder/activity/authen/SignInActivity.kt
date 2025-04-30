@@ -53,6 +53,7 @@ class SignInActivity : BaseActivity() {
         openActivity(this, ForgotPasswordActivity::class.java)
     }
 
+//    classify users by email and password
     private fun onClickValidateSignIn() {
         val strEmail = mActivitySignInBinding.edtEmail.text.toString().trim { it <= ' ' }
         val strPassword = mActivitySignInBinding.edtPassword.text.toString().trim { it <= ' ' }
@@ -87,19 +88,7 @@ class SignInActivity : BaseActivity() {
                 }
                 return
             }
-            if (mActivitySignInBinding.rdbDriver.isChecked) {
-                if (!strEmail.contains(Constant.DRIVER_EMAIL_FORMAT)) {
-                    Toast.makeText(
-                        this@SignInActivity,
-                        getString(R.string.msg_email_invalid_driver),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    signInUser(strEmail, strPassword)
-                }
-                return
-            }
-            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT) || strEmail.contains(Constant.DRIVER_EMAIL_FORMAT)) {
+            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                 Toast.makeText(
                     this@SignInActivity,
                     getString(R.string.msg_email_invalid_user),
@@ -111,6 +100,7 @@ class SignInActivity : BaseActivity() {
         }
     }
 
+//    Call Firebase Auth to login and save to DataStoreManager
     private fun signInUser(email: String, password: String) {
         showProgressDialog(true)
         val firebaseAuth = FirebaseAuth.getInstance()
@@ -118,6 +108,7 @@ class SignInActivity : BaseActivity() {
             .addOnCompleteListener(this) { task: Task<AuthResult?> ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
+                    Log.d("SignIn", "Đăng nhập Firebase thành công: ${user?.email}")
                     if (user != null) {
                         val userObject = User(user.email, password)
                         if (user.email != null && user.email!!.contains(Constant.ADMIN_EMAIL_FORMAT)) {
@@ -132,9 +123,6 @@ class SignInActivity : BaseActivity() {
                             // Get Token from Firebase and save DataStoreManager (SharedPreference)
                             getTokenFirebase(email)
                         }
-
-
-
                     }
                 } else {
                     showProgressDialog(false)
@@ -146,6 +134,7 @@ class SignInActivity : BaseActivity() {
             }
     }
 
+//    Check if first login admin is not already in Realtime Database and call getTokenFirebase()
     private fun createAdminNodeOnRTDB(email: String) {
         val userRef = ControllerApplication[this@SignInActivity].userDatabaseReference
         // Query to check if email exists in the user node
@@ -207,6 +196,7 @@ class SignInActivity : BaseActivity() {
                 }
                 // Get FCM registration token
                 val token: String? = task.result
+//                Save token to DataStoreManager
                 DataStoreManager.token = token
 
                 // set token on realtime database of this user
@@ -222,10 +212,14 @@ class SignInActivity : BaseActivity() {
             }
     }
 
+//    Find user node, save token and Redirect to main screen gotoMainActivity()
     private fun setFCMTokenUserOnRTDB(email: String, token: String?) {
+        Log.d("CheckFlow", "Đã vào hàm setFCMTokenUserOnRTDB với email = $email và token = $token")
         val userRef = ControllerApplication[this@SignInActivity].userDatabaseReference
         // Query to check if email exists in the user node
         val query: Query = userRef.orderByChild("email").equalTo(email)
+        // Log query thông qua các chi tiết truy vấn
+        Log.d("FirebaseQuery", "$query")
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -233,6 +227,7 @@ class SignInActivity : BaseActivity() {
                 for (snapshot in dataSnapshot.children) {
                     // Get the user ID of the matching email
                     val userId = snapshot.key
+                    Log.d("CheckFlow", "userId = $userId")
 
                     // Add the fcmToken to the user node
                     val tokenId = System.currentTimeMillis()
@@ -244,8 +239,9 @@ class SignInActivity : BaseActivity() {
                     Log.d("tokenId", DataStoreManager.tokenId.toString())
                     Log.d("token", DataStoreManager.token.toString())
                 }
-                showProgressDialog(false)
+                Log.d("CheckFlow", "Trước khi gọi gotoMainActivity")
                 gotoMainActivity(this@SignInActivity)
+                Log.d("CheckFlow", "Sau khi gọi gotoMainActivity")
                 finishAffinity()
             }
 

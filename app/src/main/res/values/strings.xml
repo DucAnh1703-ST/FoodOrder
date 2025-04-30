@@ -110,12 +110,12 @@
     <string name="str_password">Mật khẩu</string>
     <string name="str_user_name">Họ và Tên (tùy chọn)</string>
     <string name="hint_user_name_sign_up">Họ và Tên</string>
-    <string name="sign_in_hello">Chào mừng bạn đã quay lại</string>
+    <string name="sign_in_hello">Chào mừng bạn đến với FoodOrder</string>
     <string name="sign_in_request">Vui lòng nhập email &amp; mật khẩu để đăng nhập.</string>
     <string name="sign_up_create_account">Tạo tài khoản</string>
-    <string name="sign_up_invitation">Đăng ký để khám phá thế giới của cà phê.</string>
+    <string name="sign_up_invitation">Đăng ký để đặt đồ ăn nhanh chóng.</string>
     <string name="reset_your_password">Đặt lại mật khẩu của bạn</string>
-    <string name="forgot_password_guide">Vui lòng nhập địa chỉ email của bạn. Chúng tôi sẽ gửi hướng dẫn đặt lại mật khẩu cho bạn qua email.</string>
+    <string name="forgot_password_guide">Vui lòng nhập địa chỉ email của bạn. Chúng tôi sẽ gửi hướng dẫn đặt lại mật khẩu cho bạn qua email rất dễ dàng.</string>
     <string name="admin">Quản trị viên</string>
     <string name="driver">Tài xế</string>
     <string name="user">Khách hàng</string>

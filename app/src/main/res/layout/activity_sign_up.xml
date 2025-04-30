@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_40"
-            android:gravity="bottom"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -43,11 +43,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up_create_account" />
 
-            <ImageView
-                android:layout_width="@dimen/define_dimen_32"
-                android:layout_height="@dimen/define_dimen_32"
-                android:layout_marginStart="@dimen/define_dimen_5"
-                android:src="@drawable/ic_create_account" />
         </LinearLayout>
 
         <TextView
@@ -55,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:text="@string/sign_up_invitation" />
+            android:text="@string/sign_up_invitation"
+            android:layout_gravity="center_horizontal"/>
 
 
         <TextView
@@ -209,20 +205,6 @@
 
         </LinearLayout>
 
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/tv_forgot_password"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center_horizontal"-->
-        <!--            android:layout_marginTop="@dimen/define_dimen_10"-->
-        <!--            android:padding="@dimen/define_dimen_10"-->
-        <!--            android:text="@string/forgot_password"-->
-        <!--            android:textColor="@color/colorPrimaryDark"-->
-        <!--            android:textSize="@dimen/text_size_small"-->
-        <!--            android:textStyle="bold" />-->
-
-
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -245,45 +227,45 @@
                 android:text="@string/user" />
         </RadioGroup>
 
-        <LinearLayout
-            android:id="@+id/layout_sign_in"
+        <Button
+            android:id="@+id/btn_sign_up"
+            style="@style/MyButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_50"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/define_dimen_18">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/have_account"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/define_dimen_6"
-                android:text="@string/sign_in"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:layout_marginTop="@dimen/define_dimen_30"
+            android:text="@string/sign_up_user"
+            app:backgroundTint="@color/colorPrimaryDark" />
 
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_sign_up"
-        style="@style/MyButtonStyle"
+    <LinearLayout
+        android:id="@+id/layout_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="@dimen/define_dimen_16"
-        android:layout_marginTop="@dimen/define_dimen_30"
-        android:layout_marginBottom="@dimen/define_dimen_20"
-        android:text="@string/sign_up_user"
-        app:backgroundTint="@color/colorPrimaryDark" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/define_dimen_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/have_account"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_6"
+            android:text="@string/sign_in"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </RelativeLayout>
+
+
+

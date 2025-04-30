@@ -15,6 +15,7 @@
         android:orientation="vertical"
         android:padding="@dimen/define_dimen_16">
 
+        <!-- Tiêu đề -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,11 +25,12 @@
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
+        <!-- Chào mừng -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_40"
-            android:gravity="bottom"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -37,11 +39,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in_hello" />
 
-            <ImageView
-                android:layout_width="@dimen/define_dimen_32"
-                android:layout_height="@dimen/define_dimen_32"
-                android:layout_marginStart="@dimen/define_dimen_5"
-                android:src="@drawable/ic_wave" />
         </LinearLayout>
 
         <TextView
@@ -49,15 +46,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:text="@string/sign_in_request" />
+            android:text="@string/sign_in_request"
+            android:layout_gravity="center_horizontal" />
 
+        <!-- Email -->
         <TextView
             style="@style/TextViewPrimaryNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_30"
             android:text="@string/str_email" />
-
 
         <LinearLayout
             android:id="@+id/layout_email"
@@ -97,10 +95,9 @@
                 android:padding="@dimen/define_dimen_10"
                 android:src="@drawable/ic_clear_no_bg"
                 android:visibility="gone" />
-
         </LinearLayout>
 
-
+        <!-- Password -->
         <TextView
             style="@style/TextViewPrimaryNormal"
             android:layout_width="match_parent"
@@ -145,27 +142,24 @@
                 android:layout_marginStart="@dimen/define_dimen_5"
                 android:padding="@dimen/define_dimen_8"
                 android:src="@drawable/ic_show" />
-
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/tv_forgot_password"
-            android:layout_width="wrap_content"
+        <!-- Button Đăng nhập -->
+        <Button
+            android:id="@+id/btn_sign_in"
+            style="@style/MyButtonStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/define_dimen_20"
-            android:padding="@dimen/define_dimen_10"
-            android:text="@string/forgot_password"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/text_size_small"
-            android:textStyle="bold" />
+            android:text="@string/sign_in_user"
+            app:backgroundTint="@color/colorPrimaryDark" />
 
+        <!-- RadioGroup -->
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/define_dimen_10"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
             <RadioButton
@@ -192,49 +186,48 @@
                 android:text="@string/user"
                 android:checked="true"
                 android:textColor="@color/textColorPrimary" />
-
         </RadioGroup>
 
-        <LinearLayout
-            android:id="@+id/layout_sign_up"
-            android:layout_width="match_parent"
+        <!-- Forgot password -->
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_10"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/define_dimen_18">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/have_not_account"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/define_dimen_6"
-                android:text="@string/sign_up"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/define_dimen_20"
+            android:padding="@dimen/define_dimen_10"
+            android:text="@string/forgot_password"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_sign_in"
-        style="@style/MyButtonStyle"
+    <!-- Sign up ở cuối màn -->
+    <LinearLayout
+        android:id="@+id/layout_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="@dimen/define_dimen_16"
-        android:layout_marginTop="@dimen/define_dimen_30"
-        android:layout_marginBottom="@dimen/define_dimen_20"
-        android:text="@string/sign_in_user"
-        app:backgroundTint="@color/colorPrimaryDark" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/define_dimen_18">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/have_not_account"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_6"
+            android:text="@string/sign_up"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </RelativeLayout>
