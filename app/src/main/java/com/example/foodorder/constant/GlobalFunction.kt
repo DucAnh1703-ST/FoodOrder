@@ -1,6 +1,7 @@
 package com.example.foodorder.constant
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -230,5 +231,13 @@ object GlobalFunction {
     @JvmStatic
     fun showToastMessage(context: Context?, message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    @SuppressLint("PrivateResource")
+    fun customizeBottomSheetDialog(viewDialog: Dialog) {
+        viewDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        viewDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        viewDialog.window?.attributes?.windowAnimations = com.google.android.material.R.style.MaterialAlertDialog_Material3_Animation
+        viewDialog.window?.setGravity(Gravity.BOTTOM)
     }
 }

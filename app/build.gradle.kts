@@ -67,12 +67,18 @@ dependencies {
     implementation (libs.gson)
 
     // Room database
-    implementation (libs.androidx.room.runtime)
-    kapt (libs.androidx.room.compiler.v225)
+//    implementation (libs.androidx.room.runtime)
+//    kapt (libs.androidx.room.compiler.v225)
+    implementation (libs.androidx.room.runtime.v251)
+    kapt           (libs.androidx.room.compiler.v251)
+
 
     // Indicator
     implementation (libs.circleindicator)
 
     // Glide load image
     implementation (libs.glide)
+
+    //event bus
+    implementation (libs.eventbus)
 }
