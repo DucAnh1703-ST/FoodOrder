@@ -11,7 +11,7 @@ interface Constant {
         const val SKYPE_ID = "bangofficial.no1_1" // "live:bangofficial.no1_1"
         const val ZALO_LINK = "https://zalo.me/0356265666"
         const val FIREBASE_URL = "https://foodorder-479ca-default-rtdb.firebaseio.com"
-        const val NAME_PAYMENT_COD = "Thanh toán khi nhận tiền (COD)"
+        const val NAME_PAYMENT_COD = "Thanh toán khi nhận hàng (COD)"
         const val NAME_PAYMENT_WALLET = "Thanh toán bằng Ví MoMo"
         const val TYPE_PAYMENT_COD = 1
         const val TYPE_PAYMENT_WALLET = 2
@@ -20,7 +20,6 @@ interface Constant {
         const val CURRENCY = ".000 VNĐ"
 
         const val ADMIN_EMAIL_FORMAT = "@admin.com"
-        const val DRIVER_EMAIL_FORMAT = "@driver.com"
 
         const val NEXT = "IME_ACTION_NEXT"
         const val DONE = "IME_ACTION_DONE"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".controll.ControllerApplication"
+        android:name=".ControllerApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,6 +40,10 @@
         </activity>
         <activity
             android:name=".activity.FoodDetailActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.CategoryActivity"
             android:exported="true">
         </activity>
     </application>

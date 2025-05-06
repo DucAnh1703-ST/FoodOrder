@@ -72,6 +72,10 @@ dependencies {
     implementation (libs.androidx.room.runtime.v251)
     kapt           (libs.androidx.room.compiler.v251)
 
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.logging.interceptor)
+    implementation (libs.converter.scalars)
 
     // Indicator
     implementation (libs.circleindicator)
@@ -81,4 +85,8 @@ dependencies {
 
     //event bus
     implementation (libs.eventbus)
+
+    // JSON Parsing
+    implementation (libs.gson.v286)
+    implementation (libs.converter.gson)
 }

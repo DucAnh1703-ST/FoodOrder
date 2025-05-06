@@ -14,20 +14,18 @@ import com.example.foodorder.constant.Constant
 import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.hideSoftKeyboard
 import com.example.foodorder.constant.GlobalFunction.setOnActionSearchListener
-import com.example.foodorder.controll.ControllerApplication
+import com.example.foodorder.ControllerApplication
 import com.example.foodorder.databinding.ActivitySearchBinding
 import com.example.foodorder.listener.IOnClickFoodItemListener
 import com.example.foodorder.model.Category
 import com.example.foodorder.model.Food
-import com.example.foodorder.utils.StringUtil
 import com.example.foodorder.utils.StringUtil.normalizeEnglishText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
-import java.util.Locale
 
-class SearchActivity : AppCompatActivity(){
+class SearchActivity : AppCompatActivity() {
 
     private lateinit var mActivitySearchBinding: ActivitySearchBinding
     private var mListCategory: MutableList<Category> = mutableListOf()
@@ -37,9 +35,6 @@ class SearchActivity : AppCompatActivity(){
     private lateinit var mFoodGridAdapter: FoodGridAdapter
     private var categorySelected: Long = 0L
 
-//    private var loadedItemCount: Int = 0        // Dùng cho phân trang, tính sau
-//    private var hasMoreData: Boolean = true     // Dùng cho phân trang, tính sau
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivitySearchBinding = ActivitySearchBinding.inflate(layoutInflater)
@@ -48,7 +43,8 @@ class SearchActivity : AppCompatActivity(){
         initListeners()
         getListCategory()
         setupDisplayFood()
-        loadFilteredData(0L, "") //khi mặc định là Tất cả + chưa có từ khóa tìm kiếm
+//        / First load: category = 0 (“All”), searchKeyword = ""
+        loadFilteredData(0L, "")
 
         setupTouchOtherToClearAllFocus()
         setupLayoutSearchListener()
@@ -57,12 +53,12 @@ class SearchActivity : AppCompatActivity(){
     private fun initListeners() {
         //If from HomeFragment, focus EditText (change background, show keyboard)
         //If from CartFragment, No focus EditText
-        checkRequestFocusEdtSeach()
+        checkRequestFocusEdtSearch()
 
         mActivitySearchBinding.imageBack.setOnClickListener {
-            hideSoftKeyboard(this)
-            finish()
-        }
+                hideSoftKeyboard(this)
+                finish()
+            }
 
         mActivitySearchBinding.imgSearch.setOnClickListener {
 
@@ -70,23 +66,25 @@ class SearchActivity : AppCompatActivity(){
 
             hideSoftKeyboard(this)
             mActivitySearchBinding.edtSearchName.clearFocus()
-            Log.d("SearchA cateSeled img: ", categorySelected.toString() )
+            Log.d("SearchA cateSeled img: ", categorySelected.toString())
         }
-        mActivitySearchBinding.edtSearchName.setOnActionSearchListener(
 
-            { loadFilteredData(categorySelected, mActivitySearchBinding.edtSearchName.text.toString())},
-
+        mActivitySearchBinding.edtSearchName.setOnActionSearchListener({
+            loadFilteredData(
+                categorySelected, mActivitySearchBinding.edtSearchName.text.toString()
+            )
+        },
             { hideSoftKeyboard(this) },
             { mActivitySearchBinding.edtSearchName.clearFocus() },
-            { Log.d("SearchA cateSeled img: ", categorySelected.toString()) }
-        )
+            { Log.d("SearchA cateSeled img: ", categorySelected.toString()) })
+
         mActivitySearchBinding.imgClear.setOnClickListener {
             mActivitySearchBinding.edtSearchName.setText("")
             loadFilteredData(categorySelected, mActivitySearchBinding.edtSearchName.text.toString())
         }
     }
 
-    private fun checkRequestFocusEdtSeach() {
+    private fun checkRequestFocusEdtSearch() {
         val bundle = intent.extras
         if (bundle != null) {
             val dataFromHome = bundle.getString(Constant.KEY_INTENT_FROM_HOME)
@@ -99,40 +97,41 @@ class SearchActivity : AppCompatActivity(){
     }
 
     private fun getListCategory() {
-        ControllerApplication[this@SearchActivity].categoryDatabaseReference
-            .addValueEventListener(object : ValueEventListener {
+        ControllerApplication[this@SearchActivity].categoryDatabaseReference.addValueEventListener(
+            object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     mActivitySearchBinding.tvCategoryTitle.visibility = View.VISIBLE
                     mListCategory.clear()
+//                    Get Categories
                     for (dataSnapshot in snapshot.children) {
                         val category = dataSnapshot.getValue(Category::class.java)
                         if (category != null) {
                             mListCategory.add(category)
                         }
                     }
+//                    Add “Tất cả” at the beginning
                     mCategoryAll = Category(0L, getString(R.string.label_all), "")
                     mListCategory.add(0, mCategoryAll)
 
                     //Setup Recyclerview Adapter category
-                    val linearLayoutManager = LinearLayoutManager(this@SearchActivity,
-                        LinearLayoutManager.HORIZONTAL, false)
+                    val linearLayoutManager = LinearLayoutManager(
+                        this@SearchActivity, LinearLayoutManager.HORIZONTAL, false
+                    )
                     mActivitySearchBinding.rcvCategory.layoutManager = linearLayoutManager
-                    mCategorySearchAdapter = CategorySearchAdapter(
-                        this@SearchActivity, mListCategory, object :
-                            CategorySearchAdapter.IOnClickItemCategorySearch {
+                    mCategorySearchAdapter = CategorySearchAdapter(this@SearchActivity,
+                        mListCategory,
+                        object : CategorySearchAdapter.IOnClickItemCategorySearch {
                             override fun onSelectedCategorySearch(categoryId: Long) {
                                 categorySelected = categoryId
-//                                loadedItemCount = 0 // reset biến đếm //Cho phân trang, tính sau
-                                //TODO: gọi hàm search /filter theo id
+                                loadFilteredData(
+                                    categorySelected,
+                                    mActivitySearchBinding.edtSearchName.text.toString()
+                                )
 
-                                loadFilteredData(categorySelected, mActivitySearchBinding.edtSearchName.text.toString())
-
-                                Log.d("SearchA cateSel.ed CI: ", categorySelected.toString() )
+                                Log.d("SearchA cateSel.ed CI: ", categorySelected.toString())
                             }
                         })
-
                     mActivitySearchBinding.rcvCategory.adapter = mCategorySearchAdapter
-
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -153,119 +152,40 @@ class SearchActivity : AppCompatActivity(){
         mActivitySearchBinding.rcvData.adapter = mFoodGridAdapter
     }
 
-
+    //    Display food list based on category and keyword
     fun loadFilteredData(categoryId: Long, searchKeyword: String) {
         mListFood.clear()
-        val query: Query
-                = if(categoryId == 0L){
+        val query: Query = if (categoryId == 0L) {
             ControllerApplication[this].foodDatabaseReference
-        }
-        else {
-            ControllerApplication[this].foodDatabaseReference
-                .orderByChild("categoryId")
+        } else {
+            ControllerApplication[this].foodDatabaseReference.orderByChild("categoryId")
                 .equalTo(categoryId.toDouble())
         }
 
-        query.
-        addListenerForSingleValueEvent(object : ValueEventListener {
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (snapshot in dataSnapshot.children) {
                     val food = snapshot.getValue(Food::class.java)
                     if (food != null) {
-
-                        // So sánh tên chuẩn hóa với từ khóa chuẩn hóa từ người dùng
-                        if (normalizeEnglishText(food.name).contains(normalizeEnglishText(searchKeyword))) {
-
-                            // Xử lý các mục thỏa mãn yêu cầu
+//                        Filter food based on keywords
+                        if (normalizeEnglishText(food.name).contains(
+                                normalizeEnglishText(
+                                    searchKeyword
+                                )
+                            )
+                        ) {
                             mListFood.add(food)
-//                            loadedItemCount++ // dành cho phân trang, tính sau
                         }
 
                     }
-
-
-                    // Kiểm tra xem đã tải đủ số lượng mục mong muốn chưa
-                    //Dành cho phân trang, tính sau
-//                    if (loadedItemCount >= Constant.MAX_ITEM_PER_LOAD) {
-//                        break // Dừng khi đã tải đủ số lượng mục
-//                    }
                 }
                 mFoodGridAdapter.updateData(mListFood)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Xử lý lỗi nếu có
             }
         })
     }
-
-
-
-
-
-
-
-
-
-
-    // Tạm thời chưa dùng
-    private fun getInitListFood() {
-        val queryInitListFood: Query = ControllerApplication[this].foodDatabaseReference
-            .limitToFirst(Constant.MAX_ITEM_PER_LOAD_GRID)
-
-
-        queryInitListFood.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                mListFood.clear()
-                for (dataSnapshot in snapshot.children) {
-                    val food = dataSnapshot.getValue(Food::class.java)!!
-                    if (isFoodResult(food)) {
-                        mListFood.add(0, food)
-                    }
-                }
-                displayListFoodResult()
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
-    }
-
-    // Tạm thời chưa dùng
-    private fun displayListFoodResult() {
-        val gridLayoutManager = GridLayoutManager(this, 2)
-        mActivitySearchBinding.rcvData.layoutManager = gridLayoutManager
-        mFoodGridAdapter =
-            FoodGridAdapter(this@SearchActivity, mListFood, object : IOnClickFoodItemListener {
-                override fun onClickItemFood(food: Food) {
-                    GlobalFunction.goToFoodDetail(this@SearchActivity, food)
-                }
-            })
-        mActivitySearchBinding.rcvData.adapter = mFoodGridAdapter
-    }
-
-    // Tạm thời chưa dùng
-    private fun isFoodResult(food: Food?): Boolean {
-        if (food == null) {
-            return false
-        }
-        val key = mActivitySearchBinding.edtSearchName.text.toString().trim { it <= ' ' }
-        val categoryId = mCategoryAll?.id
-        return if (StringUtil.isEmpty(key)) {
-            if (categoryId == 0L) {
-                true
-            } else food.categoryId == categoryId
-        } else {
-            val isMatch = normalizeEnglishText(food.name).lowercase(Locale.getDefault()).trim { it <= ' ' }
-                .contains(normalizeEnglishText(key).lowercase(Locale.getDefault()).trim { it <= ' ' })
-            if (categoryId == 0L) {
-                isMatch
-            } else isMatch && food.categoryId == categoryId
-        }
-    }
-
-
-
-
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupTouchOtherToClearAllFocus() {
@@ -282,11 +202,6 @@ class SearchActivity : AppCompatActivity(){
             mActivitySearchBinding.edtSearchName,
             mActivitySearchBinding.imgClear
         )
-    }
-
-    @SuppressLint("LongLogTag")
-    private fun showLogs() {
-        Log.d("SearchActivity: categorySelected: ", categorySelected.toString() )
     }
 
 }

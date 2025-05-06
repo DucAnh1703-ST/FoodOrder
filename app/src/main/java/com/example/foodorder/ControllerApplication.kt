@@ -1,4 +1,4 @@
-package com.example.foodorder.controll
+package com.example.foodorder
 
 import android.app.Application
 import android.content.Context

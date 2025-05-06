@@ -11,7 +11,7 @@ import com.example.foodorder.constant.Constant
 import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.hideSoftKeyboard
 import com.example.foodorder.constant.GlobalFunction.setOnActionSearchListener
-import com.example.foodorder.controll.ControllerApplication
+import com.example.foodorder.ControllerApplication
 import com.example.foodorder.databinding.ActivityCategoryBinding
 import com.example.foodorder.listener.IOnClickFoodItemListener
 import com.example.foodorder.model.Category
@@ -42,6 +42,7 @@ class CategoryActivity : AppCompatActivity() {
         setupLayoutSearchListener()
     }
 
+//    Get Category
     private fun getDataIntent() {
         val bundleReceived = intent.extras
         if (bundleReceived != null) {
@@ -53,6 +54,7 @@ class CategoryActivity : AppCompatActivity() {
     private fun initListeners() {
         mActivityCategoryBinding.imgBack.setOnClickListener { onBackPressed() }
 
+//        Monitor edtSearchName changes via callback
         mActivityCategoryBinding.edtSearchName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
@@ -67,12 +69,14 @@ class CategoryActivity : AppCompatActivity() {
             hideSoftKeyboard(this@CategoryActivity)
             mActivityCategoryBinding.edtSearchName.clearFocus()
         }
+//        callback to remove keyboard and focus
         mActivityCategoryBinding.edtSearchName.setOnActionSearchListener(
             { hideSoftKeyboard(this@CategoryActivity) },
             { mActivityCategoryBinding.edtSearchName.clearFocus() }
         )
     }
 
+//    Filter the list of foods by keyword
     private fun filterFoodList(key: String) {
         displayFood = if (key.trim().isEmpty()) {
             mListFood  // if there is no search keyword, display the original data
@@ -86,6 +90,7 @@ class CategoryActivity : AppCompatActivity() {
         mFoodGridAdapter.updateData(displayFood)
     }
 
+//    Get list food from Firebase
     private fun getListFood() {
         ControllerApplication[this].foodDatabaseReference
             .addValueEventListener(object :
@@ -95,6 +100,7 @@ class CategoryActivity : AppCompatActivity() {
                     for (dataSnapshot in snapshot.children) {
                         val food = dataSnapshot.getValue(Food::class.java)
                         if (food != null && mCategory?.id == food.categoryId) {
+//                            Insert new food at the top of the list
                             mListFood.add(0, food)
                         }
                     }

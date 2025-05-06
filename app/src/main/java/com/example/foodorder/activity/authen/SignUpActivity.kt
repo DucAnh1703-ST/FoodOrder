@@ -8,7 +8,7 @@ import com.example.foodorder.activity.BaseActivity
 import com.example.foodorder.constant.Constant
 import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.hideSoftKeyboard
-import com.example.foodorder.controll.ControllerApplication
+import com.example.foodorder.ControllerApplication
 import com.example.foodorder.databinding.ActivitySignUpBinding
 import com.example.foodorder.utils.StringUtil.isEmpty
 import com.example.foodorder.utils.StringUtil.isValidEmail

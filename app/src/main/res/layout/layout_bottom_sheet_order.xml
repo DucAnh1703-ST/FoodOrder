@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical"
+    android:padding="@dimen/define_dimen_16"
+    tools:ignore="Autofill,LabelFor"
+    tools:viewBindingIgnore="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/define_dimen_6"
+            android:text="@string/confirm_order_detail"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_xnormal"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_foods_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        style="@style/TextViewSecondarySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:text="@string/payment_method" />
+
+    <TextView
+        android:id="@+id/tv_payment_method"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:background="@drawable/bg_white_shape_border_gray_3"
+        android:padding="@dimen/define_dimen_12"
+        android:text="@string/payment_method_cod"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        style="@style/TextViewSecondarySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:text="@string/recipient_name" />
+
+    <EditText
+        android:id="@+id/edt_name_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:background="@drawable/bg_white_shape_border_gray_3"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:padding="@dimen/define_dimen_12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        style="@style/TextViewSecondarySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:text="@string/phone_require" />
+
+    <EditText
+        android:id="@+id/edt_phone_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:background="@drawable/bg_white_shape_border_gray_3"
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:padding="@dimen/define_dimen_12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        style="@style/TextViewSecondarySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:text="@string/address_delivery" />
+
+    <EditText
+        android:id="@+id/edt_address_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:background="@drawable/bg_white_shape_border_gray_3"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="@dimen/define_dimen_12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_sub_order_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        app:layout_constraintTop_toBottomOf="@id/edt_address_order">
+
+        <TextView
+            android:id="@+id/tv_subtotal_title"
+            style="@style/TextViewSecondarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_subtotal"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_sub_total"
+            style="@style/TextViewPrimarySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_5"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_subtotal_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_subtotal_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_subtotal_title"
+            tools:ignore="MissingConstraints"
+            tools:text="56.000 VNĐ" />
+
+
+
+        <TextView
+            android:id="@+id/tv_delivery_fee_title"
+            style="@style/TextViewSecondarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5"
+            android:text="@string/str_delivery_fee"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtotal_title"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_delivery_fee"
+            style="@style/TextViewPrimarySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_5"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delivery_fee_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_delivery_fee_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_delivery_fee_title"
+            tools:ignore="MissingConstraints"
+            tools:text="15.000 VNĐ" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/define_dimen_5"
+            android:background="@color/secondDividerColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_delivery_fee_title"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_total_price_title"
+            style="@style/TextViewSecondarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5"
+            android:text="@string/str_total_fee"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_total_price"
+            style="@style/TextViewAppPrimarySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_5"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_total_price_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_total_price_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_total_price_title"
+            tools:ignore="MissingConstraints"
+            tools:text="71.000 VNĐ" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_30"
+        android:layout_marginBottom="@dimen/define_dimen_4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cancel_order"
+            style="@style/MyTextViewButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/define_dimen_10"
+            android:layout_weight="1"
+            android:background="@drawable/bg_green_light_cancel_shape_corner_circle"
+            android:text="@string/cancel"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/tv_create_order"
+            style="@style/MyTextViewButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_green_shape_corner_50"
+            android:text="@string/order_cart"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

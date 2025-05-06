@@ -13,7 +13,7 @@ import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.gotoMainActivity
 import com.example.foodorder.constant.GlobalFunction.hideSoftKeyboard
 import com.example.foodorder.constant.GlobalFunction.openActivity
-import com.example.foodorder.controll.ControllerApplication
+import com.example.foodorder.ControllerApplication
 import com.example.foodorder.databinding.ActivitySignInBinding
 import com.example.foodorder.model.User
 import com.example.foodorder.prefs.DataStoreManager

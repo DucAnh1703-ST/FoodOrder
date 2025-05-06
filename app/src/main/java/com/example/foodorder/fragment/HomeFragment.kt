@@ -21,7 +21,7 @@ import com.example.foodorder.constant.Constant
 import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.openActivity
 import com.example.foodorder.constant.GlobalFunction.showToastMessage
-import com.example.foodorder.controll.ControllerApplication
+import com.example.foodorder.ControllerApplication
 import com.example.foodorder.databinding.FragmentHomeBinding
 import com.example.foodorder.listener.IOnClickFoodItemListener
 import com.example.foodorder.model.Category
