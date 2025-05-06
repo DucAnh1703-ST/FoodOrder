@@ -240,4 +240,36 @@ object GlobalFunction {
         viewDialog.window?.attributes?.windowAnimations = com.google.android.material.R.style.MaterialAlertDialog_Material3_Animation
         viewDialog.window?.setGravity(Gravity.BOTTOM)
     }
+
+    @JvmStatic
+    fun onClickOpenFacebook(context: Context) {
+        var intent: Intent
+        try {
+            var urlFacebook: String = Constant.PAGE_FACEBOOK
+            val packageManager = context.packageManager
+            val versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode
+            if (versionCode >= 3002850) { //newer versions of fb app
+                urlFacebook = "fb://facewebmodal/f?href=" + Constant.LINK_FACEBOOK
+            }
+            intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlFacebook))
+        } catch (e: Exception) {
+            intent = Intent(Intent.ACTION_VIEW, Uri.parse(Constant.LINK_FACEBOOK))
+        }
+        context.startActivity(intent)
+    }
+
+    @JvmStatic
+    fun onClickOpenYoutubeChannel(context: Context) {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Constant.LINK_YOUTUBE)))
+    }
+
+    @JvmStatic
+    fun onClickOpenZalo(context: Context) {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Constant.ZALO_LINK)))
+    }
+
+    @JvmStatic
+    fun onClickOpenDial(context: Context) {
+        context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:${Constant.PHONE_NUMBER}")))
+    }
 }

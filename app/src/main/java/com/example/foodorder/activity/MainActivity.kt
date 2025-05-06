@@ -7,6 +7,7 @@ import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.replaceFragment
 import com.example.foodorder.databinding.ActivityMainBinding
 import com.example.foodorder.fragment.CartFragment
+import com.example.foodorder.fragment.ContactFragment
 import com.example.foodorder.fragment.FeedbackFragment
 import com.example.foodorder.fragment.HomeFragment
 
@@ -33,10 +34,10 @@ class MainActivity : BaseActivity() {
                     replaceFragment(this, FeedbackFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-//                R.id.nav_contact -> {
-//                    replaceFragment(this, ContactFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
+                R.id.nav_contact -> {
+                    replaceFragment(this, ContactFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
 //                R.id.nav_account -> {
 //                    replaceFragment(this, AccountFragment())
 //                    return@setOnNavigationItemSelectedListener true
