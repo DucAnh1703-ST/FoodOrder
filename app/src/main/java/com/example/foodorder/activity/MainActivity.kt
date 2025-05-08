@@ -3,9 +3,9 @@ package com.example.foodorder.activity
 import android.os.Bundle
 import com.afollestad.materialdialogs.MaterialDialog
 import com.example.foodorder.R
-import com.example.foodorder.constant.GlobalFunction
 import com.example.foodorder.constant.GlobalFunction.replaceFragment
 import com.example.foodorder.databinding.ActivityMainBinding
+import com.example.foodorder.fragment.AccountFragment
 import com.example.foodorder.fragment.CartFragment
 import com.example.foodorder.fragment.ContactFragment
 import com.example.foodorder.fragment.FeedbackFragment
@@ -26,22 +26,25 @@ class MainActivity : BaseActivity() {
                     replaceFragment(this, HomeFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
+
                 R.id.nav_cart -> {
                     replaceFragment(this, CartFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
+
                 R.id.nav_feedback -> {
                     replaceFragment(this, FeedbackFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
+
                 R.id.nav_contact -> {
                     replaceFragment(this, ContactFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-//                R.id.nav_account -> {
-//                    replaceFragment(this, AccountFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
+                R.id.nav_account -> {
+                    replaceFragment(this, AccountFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
                 else -> false
             }
         }
@@ -52,7 +55,6 @@ class MainActivity : BaseActivity() {
         } else {
             mActivityMainBinding.bottomNavigation.selectedItemId = R.id.nav_home
         }
-
 
     }
 

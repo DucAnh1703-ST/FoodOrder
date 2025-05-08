@@ -272,4 +272,21 @@ object GlobalFunction {
     fun onClickOpenDial(context: Context) {
         context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:${Constant.PHONE_NUMBER}")))
     }
+
+    fun TabLayout.addMyTabs(vararg texts: String, selectedTab: String) {
+        texts.forEachIndexed { _, text ->
+            val tab = this.newTab().setText(text)
+            this.addTab(tab, text == selectedTab)
+        }
+    }
+
+    fun View.setOnClickCopyTextToClipboard(textView: TextView, context: Context) {
+        this.setOnClickListener {
+            val textToCopy = textView.text.toString()
+            val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("text", textToCopy)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(context, "Đã sao chép vào Clipboard", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

@@ -15,7 +15,11 @@ class ContactFragment : Fragment() {
 
     private lateinit var mContactAdapter: ContactAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val mFragmentContactBinding = FragmentContactBinding.inflate(inflater, container, false)
         mContactAdapter = ContactAdapter(activity, getListContact())
 

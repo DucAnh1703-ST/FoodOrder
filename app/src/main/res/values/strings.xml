@@ -37,6 +37,7 @@
     <string name="add_go_cart">Đi tới giỏ hàng</string>
     <string name="added_to_cart">Đã thêm vào giỏ hàng</string>
     <string name="add_to_cart_success">Thêm vào giỏ hàng thành công!</string>
+    <string name="desc_tab_layout_status">Chọn trạng thái đơn hàng</string>
     <string name="cancel">Hủy bỏ</string>
     <string name="send_feedback_success">Gửi phản hồi thành công.\nCảm ơn quý khách!</string>
     <string name="name_require">Vui lòng nhập Họ và Tên</string>
