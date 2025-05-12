@@ -37,8 +37,11 @@ import com.example.foodorder.R
 import com.example.foodorder.activity.FoodDetailActivity
 import com.example.foodorder.activity.MainActivity
 import com.example.foodorder.activity.admin.AdminMainActivity
+import com.example.foodorder.listener.IGetDateListener
 import com.example.foodorder.model.Food
 import com.example.foodorder.prefs.DataStoreManager.Companion.user
+import com.example.foodorder.utils.StringUtil.getDoubleNumber
+import com.example.foodorder.utils.StringUtil.isEmpty
 import com.google.android.material.tabs.TabLayout
 import java.util.Calendar
 
@@ -285,5 +288,33 @@ object GlobalFunction {
             clipboardManager.setPrimaryClip(clipData)
             Toast.makeText(context, "Đã sao chép vào Clipboard", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    @JvmStatic
+    fun showDatePicker(context: Context?, currentDate: String, getDateListener: IGetDateListener) {
+        val mCalendar = Calendar.getInstance()
+        var currentDay = mCalendar[Calendar.DATE]
+        var currentMonth = mCalendar[Calendar.MONTH]
+        var currentYear = mCalendar[Calendar.YEAR]
+        mCalendar[currentYear, currentMonth] = currentDay
+        if (!isEmpty(currentDate)) {
+            val split = currentDate.split("/".toRegex()).toTypedArray()
+            currentDay = split[0].toInt()
+            currentMonth = split[1].toInt()
+            currentYear = split[2].toInt()
+            mCalendar[currentYear, currentMonth - 1] = currentDay
+        }
+        val callBack =
+            DatePickerDialog.OnDateSetListener { _: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                val date = getDoubleNumber(dayOfMonth) + "/" +
+                        getDoubleNumber(monthOfYear + 1) + "/" + year
+                getDateListener.getDate(date)
+            }
+        val datePicker = DatePickerDialog(
+            context!!,
+            callBack, mCalendar[Calendar.YEAR], mCalendar[Calendar.MONTH],
+            mCalendar[Calendar.DATE]
+        )
+        datePicker.show()
     }
 }
