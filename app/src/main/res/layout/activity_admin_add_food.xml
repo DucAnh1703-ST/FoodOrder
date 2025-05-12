@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_wrap"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:ignore="ContentDescription, Autofill">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        tools:ignore="Autofill,LabelFor,UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/define_dimen_16">
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_category" />
+
+            <Spinner
+                android:id="@+id/spn_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@color/transparent"
+                android:scrollbars="none" />
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_name" />
+
+            <LinearLayout
+                android:id="@+id/layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/define_dimen_48"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:paddingStart="@dimen/define_dimen_16" />
+
+                <ImageView
+                    android:id="@+id/img_clear_name"
+                    android:layout_width="@dimen/define_dimen_30"
+                    android:layout_height="@dimen/define_dimen_30"
+                    android:layout_marginEnd="@dimen/define_dimen_5"
+                    android:padding="@dimen/define_dimen_10"
+                    android:src="@drawable/ic_clear_no_bg"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_description" />
+
+            <LinearLayout
+                android:id="@+id/layout_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edt_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="@string/hint_description"
+                    android:imeOptions="actionNext"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:lines="4"
+                    android:paddingVertical="@dimen/define_dimen_12"
+                    android:paddingStart="@dimen/define_dimen_16"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <ImageView
+                    android:id="@+id/img_clear_description"
+                    android:layout_width="@dimen/define_dimen_30"
+                    android:layout_height="@dimen/define_dimen_30"
+                    android:layout_marginTop="@dimen/define_dimen_5"
+                    android:layout_marginEnd="@dimen/define_dimen_5"
+                    android:padding="@dimen/define_dimen_10"
+                    android:src="@drawable/ic_clear_no_bg"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_price" />
+
+            <RelativeLayout
+                android:id="@+id/layout_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive">
+
+                <EditText
+                    android:id="@+id/edt_price"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/define_dimen_48"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_currency"
+                    android:background="@null"
+                    android:hint="@string/hint_price"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:paddingVertical="@dimen/define_dimen_12"
+                    android:paddingStart="@dimen/define_dimen_16" />
+
+                <TextView
+                    android:id="@+id/tv_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_16"
+                    android:text="@string/currency_food"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_discount" />
+
+            <RelativeLayout
+                android:id="@+id/layout_discount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive">
+
+                <EditText
+                    android:id="@+id/edt_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/define_dimen_48"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_percent"
+                    android:background="@null"
+                    android:hint="@string/hint_discount"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingStart="@dimen/define_dimen_16"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_16"
+                    android:text="@string/percent"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_image" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edt_image"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/define_dimen_48"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_image"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/define_dimen_16" />
+
+                <ImageView
+                    android:id="@+id/img_clear_image"
+                    android:layout_width="@dimen/define_dimen_30"
+                    android:layout_height="@dimen/define_dimen_30"
+                    android:layout_marginEnd="@dimen/define_dimen_5"
+                    android:padding="@dimen/define_dimen_10"
+                    android:src="@drawable/ic_clear_no_bg"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_image_banner" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_image_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edt_image_banner"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/define_dimen_48"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_image_banner"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/define_dimen_16" />
+
+                <ImageView
+                    android:id="@+id/img_clear_image_banner"
+                    android:layout_width="@dimen/define_dimen_30"
+                    android:layout_height="@dimen/define_dimen_30"
+                    android:layout_marginEnd="@dimen/define_dimen_5"
+                    android:padding="@dimen/define_dimen_10"
+                    android:src="@drawable/ic_clear_no_bg"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_16"
+                android:background="@drawable/bg_color_white_border_divider_radius_12"
+                android:paddingHorizontal="@dimen/define_dimen_8">
+
+                <CheckBox
+                    android:id="@+id/chb_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/define_dimen_56"
+                    android:background="@null"
+                    android:text="@string/popular" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextViewPrimarySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/food_image_other" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/food_image_other_note"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_size_xsmall" />
+
+            <LinearLayout
+                android:id="@+id/layout_other_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:background="@drawable/bg_edittext_inactive"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edt_other_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="@string/hint_image_other"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:maxLines="8"
+                    android:minLines="4"
+                    android:paddingVertical="@dimen/define_dimen_12"
+                    android:paddingStart="@dimen/define_dimen_16"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <ImageView
+                    android:id="@+id/img_clear_other_image"
+                    android:layout_width="@dimen/define_dimen_30"
+                    android:layout_height="@dimen/define_dimen_30"
+                    android:layout_marginTop="@dimen/define_dimen_5"
+                    android:layout_marginEnd="@dimen/define_dimen_5"
+                    android:padding="@dimen/define_dimen_10"
+                    android:src="@drawable/ic_clear_no_bg"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add_or_edit"
+                style="@style/MyButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_20"
+                android:text="@string/action_add"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small"
+                app:backgroundTint="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

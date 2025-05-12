@@ -35,7 +35,6 @@ interface Constant {
         // User Type
         const val TYPE_USER_ADMIN = 1       // Admin
         const val TYPE_USER_USER = 2       // User
-        const val TYPE_USER_DRIVER = 3       // Driver
 
         //    Status Code:
         const val CODE_NEW_ORDER = 30       // Chờ xác nhận

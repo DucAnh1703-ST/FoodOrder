@@ -62,9 +62,6 @@ object GlobalFunction {
     fun gotoMainActivity(context: Context) {
         if (user!!.type == Constant.TYPE_USER_ADMIN) {
             openActivity(context, AdminMainActivity::class.java)
-        } else  if (user!!.type == Constant.TYPE_USER_DRIVER){
-//            startActivity(context, DriverMainActivity::class.java)
-            Toast.makeText(context, "Global function gotoMainActivity: Cần tạo DriverMainActivity", Toast.LENGTH_SHORT ).show()
         } else {
             openActivity(context, MainActivity::class.java)
         }
