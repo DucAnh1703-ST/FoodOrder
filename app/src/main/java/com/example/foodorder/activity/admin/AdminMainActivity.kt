@@ -8,6 +8,7 @@ import com.example.foodorder.constant.GlobalFunction.replaceFragment
 import com.example.foodorder.databinding.ActivityAdminMainBinding
 import com.example.foodorder.fragment.admin.AdminCategoryFragment
 import com.example.foodorder.fragment.admin.AdminHomeFragment
+import com.example.foodorder.fragment.admin.AdminOrderFragment
 
 class AdminMainActivity : BaseActivity() {
 
@@ -29,7 +30,7 @@ class AdminMainActivity : BaseActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_order -> {
-                    replaceFragment(this,AdminOrderFragment())
+                    replaceFragment(this, AdminOrderFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
 //                R.id.nav_feedback -> {

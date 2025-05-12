@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodorder.ControllerApplication
 import com.example.foodorder.R
 import com.example.foodorder.activity.admin.AdminMainActivity
+import com.example.foodorder.activity.admin.AdminOrderDetailActivity
 import com.example.foodorder.adapter.admin.AdminOrderAdapter
 import com.example.foodorder.constant.Constant
 import com.example.foodorder.constant.GlobalFunction
