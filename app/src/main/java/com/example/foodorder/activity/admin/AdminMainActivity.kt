@@ -6,6 +6,7 @@ import com.example.foodorder.R
 import com.example.foodorder.activity.BaseActivity
 import com.example.foodorder.constant.GlobalFunction.replaceFragment
 import com.example.foodorder.databinding.ActivityAdminMainBinding
+import com.example.foodorder.fragment.admin.AdminCategoryFragment
 import com.example.foodorder.fragment.admin.AdminHomeFragment
 
 class AdminMainActivity : BaseActivity() {
@@ -23,14 +24,14 @@ class AdminMainActivity : BaseActivity() {
                     replaceFragment(this, AdminHomeFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-//                R.id.nav_category -> {
-//                    replaceFragment(this,AdminCategoryFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
-//                R.id.nav_order -> {
-//                    replaceFragment(this,AdminOrderFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
+                R.id.nav_category -> {
+                    replaceFragment(this, AdminCategoryFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.nav_order -> {
+                    replaceFragment(this,AdminOrderFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
 //                R.id.nav_feedback -> {
 //                    replaceFragment(this,AdminFeedbackFragment())
 //                    return@setOnNavigationItemSelectedListener true
