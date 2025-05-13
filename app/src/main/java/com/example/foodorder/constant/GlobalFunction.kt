@@ -1,21 +1,16 @@
 package com.example.foodorder.constant
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.ActivityNotFoundException
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -31,7 +26,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.foodorder.R
 import com.example.foodorder.activity.FoodDetailActivity
@@ -217,7 +211,9 @@ object GlobalFunction {
         }
         val fragments = fragmentManager.fragments
         for (f in fragments) {
-            if (f != existingFragment) { fragmentTransaction.hide(f) }
+            if (f != existingFragment) {
+                fragmentTransaction.hide(f)
+            }
         }
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
@@ -235,9 +231,13 @@ object GlobalFunction {
 
     @SuppressLint("PrivateResource")
     fun customizeBottomSheetDialog(viewDialog: Dialog) {
-        viewDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        viewDialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         viewDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        viewDialog.window?.attributes?.windowAnimations = com.google.android.material.R.style.MaterialAlertDialog_Material3_Animation
+        viewDialog.window?.attributes?.windowAnimations =
+            com.google.android.material.R.style.MaterialAlertDialog_Material3_Animation
         viewDialog.window?.setGravity(Gravity.BOTTOM)
     }
 
@@ -283,7 +283,8 @@ object GlobalFunction {
     fun View.setOnClickCopyTextToClipboard(textView: TextView, context: Context) {
         this.setOnClickListener {
             val textToCopy = textView.text.toString()
-            val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipboardManager =
+                context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText("text", textToCopy)
             clipboardManager.setPrimaryClip(clipData)
             Toast.makeText(context, "Đã sao chép vào Clipboard", Toast.LENGTH_SHORT).show()

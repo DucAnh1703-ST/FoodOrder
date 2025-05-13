@@ -230,8 +230,8 @@
     <!-- digits -->
     <string name="digits_number">0123456789</string>
     <string name="change_new_password">Đổi mật khẩu mới</string>
-    <string name="change_password_suggest">Đổi mật khẩu của bạn. Nếu bạn quên nó, hãy bấm vào quên mật khẩu ở màn hình đăng nhập.</string>
-    <string name="contact_suggest">Liên hệ và theo dõi cửa hàng qua các kênh sau:</string>
+    <string name="change_password_suggest">Vui lòng nhập lại mật khẩu cũ và nhập mật khẩu mới, sau đó hãy xác nhận lại nhé.</string>
+    <string name="contact_suggest">Liên hệ với chúng tôi qua các cách sau:</string>
     <string name="hint_full_name">Họ và tên</string>
     <string name="hint_phone">Số điện thoại</string>
     <string name="hint_comment">Hãy đóng góp ý kiến cho chúng tôi. Cảm ơn quý khách!</string>

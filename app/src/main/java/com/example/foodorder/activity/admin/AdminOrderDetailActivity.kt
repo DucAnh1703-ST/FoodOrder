@@ -1,5 +1,6 @@
 package com.example.foodorder.activity.admin
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
@@ -144,12 +145,12 @@ class AdminOrderDetailActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setOrderDetail() {
         mActivityAdminOrderDetailBinding.tvAddress.text = mOrder.address
         mActivityAdminOrderDetailBinding.tvFoods.text = mOrder.foods
         mActivityAdminOrderDetailBinding.tvNote.text = mOrder.note
-        val strPayment =
-            if (mOrder.payment == Constant.TYPE_PAYMENT_COD) Constant.PAYMENT_METHOD_COD else Constant.PAYMENT_METHOD_WALLET
+        val strPayment = Constant.PAYMENT_METHOD_COD
         mActivityAdminOrderDetailBinding.tvPaymentMethod.text = strPayment
 
         mActivityAdminOrderDetailBinding.tvDate.text =

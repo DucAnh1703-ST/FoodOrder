@@ -2,7 +2,6 @@ package com.example.foodorder.constant
 
 interface Constant {
     companion object {
-        const val GENERIC_ERROR = "General error, please try again later"
         const val PAGE_FACEBOOK = ""
         const val LINK_FACEBOOK = "https://www.facebook.com/nguyen.uc.anh.841425/"
         const val LINK_YOUTUBE = "https://www.youtube.com/@ucanhnguyen9036"
@@ -10,18 +9,11 @@ interface Constant {
         const val ZALO_LINK = "https://zalo.me/0869185582"
         const val FIREBASE_URL = "https://foodorder-479ca-default-rtdb.firebaseio.com"
         const val NAME_PAYMENT_COD = "Thanh toán khi nhận hàng (COD)"
-        const val NAME_PAYMENT_WALLET = "Thanh toán bằng Ví MoMo"
         const val TYPE_PAYMENT_COD = 1
-        const val TYPE_PAYMENT_WALLET = 2
         const val PAYMENT_METHOD_COD = "Khi nhận hàng (COD)"
-        const val PAYMENT_METHOD_WALLET = "Ví điện tử MoMo"
         const val CURRENCY = ".000 VNĐ"
 
         const val ADMIN_EMAIL_FORMAT = "@admin.com"
-
-        const val NEXT = "IME_ACTION_NEXT"
-        const val DONE = "IME_ACTION_DONE"
-        const val SEARCH = "IME_ACTION_SEARCH"
 
         // Key Intent
         const val KEY_INTENT_CATEGORY_OBJECT = "category_object"
@@ -29,8 +21,6 @@ interface Constant {
         const val KEY_INTENT_ORDER_OBJECT = "order_object"
         const val KEY_INTENT_ADMIN_ORDER_OBJECT = "admin_order_object"
         const val KEY_INTENT_FROM_HOME = "admin_order_object"
-        const val KEY_INTENT_URL = "URL"
-
 
         // User Type
         const val TYPE_USER_ADMIN = 1       // Admin
@@ -43,19 +33,8 @@ interface Constant {
         const val CODE_COMPLETED = 33       // Đã giao thành công
         const val CODE_CANCELLED = 34       // Đã hủy
         const val CODE_FAILED = 35          // Thât bại
-        const val CODE_NEW_MOMO_UNPAID = 1  // Phương thức thanh toán MoMo nhưng chưa tiến hành thanh toán,
         // sẽ không hiển thị ở danh sách nhìn thấy của Admin và người dùng
         // Mà chỉ đưa lên DB với trạng thái này thôi
-
-        // Viết đây nhưng chưa làm cái liên quan ship, vận chuyển
-        //Fees
-        const val FEE_DEFAULT = 15      // Fee shipping
-        const val FEE_SERVICE = 3       // Fee service
-        const val FEE_PER_KM = 5        // Fee/km next
-
-        //KM has same shipping fee
-        const val KM_DEFAULT = 3
-
 
         //    Status Text
         const val TEXT_ALL_ORDER: String = "Tất cả"
@@ -69,27 +48,5 @@ interface Constant {
 
         // Max Item/ 1 load
         const val MAX_ITEM_PER_LOAD_LINEAR: Int = 10
-        const val MAX_ITEM_PER_LOAD_GRID: Int = 20
-
-
-        // MOMO Request
-        const val MOMO_PARTNER_CODE = "MOMO"
-        const val MOMO_PARTNER_NAME = "Test"
-        const val MOMO_STORE_ID = "MomoTestStore"
-        const val MOMO_ORDER_INFOR = "Thanh toán bằng MoMo"
-        const val MOMO_REDIRECT_URL = "https://coffeenbnode.onrender.com/api/redirectUrl/success"
-        const val MOMO_IPN_URL = "https://coffeenbnode.onrender.com/api/ipnUrl/success"
-        //        const val MOMO_REDIRECT_URL = "http://192.168.0.102:3006/api/redirectUrl/success"
-//        const val MOMO_IPN_URL = "http://192.168.0.102:3006/api/ipnUrl/success"
-        const val MOMO_LANG = "vi"
-        const val MOMO_REQUEST_TYPE = "captureWallet"
-        const val MOMO_AUTO_CAPTURE = true
-        const val MOMO_EXTRA_DATA = ""
-        const val MOMO_ORDER_GROUP_ID = ""
-
-        //MOMO AccessKey:
-        const val MOMO_ACCESS_KEY = "F8BBA842ECF85"
-
-
     }
 }

@@ -231,8 +231,6 @@ class CartFragment : Fragment() {
                     mPaymentSelected!!.code, strNote, paymentCode, shippingFee, totalPrice
                 )
 
-                Log.d("Order Detail: ","${order.name}, ${order.email},${order.totalPrice}")
-
                 setDataOnRealtimeDatabase(order, viewDialog)
             }
         }

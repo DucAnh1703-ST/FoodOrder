@@ -146,8 +146,7 @@ class OrderHistoryDetailActivity : BaseActivity() {
         mActivityOrderHistoryDetailBinding.tvAddress.text = mOrder.address
         mActivityOrderHistoryDetailBinding.tvFoods.text = mOrder.foods
         mActivityOrderHistoryDetailBinding.tvNote.text = mOrder.note
-        val strPayment =
-            if (mOrder.payment == Constant.TYPE_PAYMENT_COD) Constant.PAYMENT_METHOD_COD else Constant.PAYMENT_METHOD_WALLET
+        val strPayment = Constant.PAYMENT_METHOD_COD
         mActivityOrderHistoryDetailBinding.tvPaymentMethod.text = strPayment
 
         mActivityOrderHistoryDetailBinding.tvDate.text =

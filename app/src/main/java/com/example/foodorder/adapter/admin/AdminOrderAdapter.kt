@@ -37,6 +37,7 @@ class AdminOrderAdapter(private var mContext: Context?, private var mListOrder: 
         return AdminOrderViewHolder(itemAdminOrderBinding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AdminOrderViewHolder, position: Int) {
         val order = mListOrder[position]
         when (order.status) {
@@ -103,8 +104,7 @@ class AdminOrderAdapter(private var mContext: Context?, private var mListOrder: 
 
         holder.mItemAdminOrderBinding.tvId.text = order.id.toString()
         holder.mItemAdminOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
-        val strPayment =
-            if (order.payment == Constant.TYPE_PAYMENT_COD) Constant.PAYMENT_METHOD_COD else Constant.PAYMENT_METHOD_WALLET
+        val strPayment = Constant.PAYMENT_METHOD_COD
         holder.mItemAdminOrderBinding.tvPayment.text = strPayment
         val strTotalPrice: String = formatNumberWithPeriods(order.totalPrice) + Constant.CURRENCY
         holder.mItemAdminOrderBinding.tvTotalPrice.text = strTotalPrice
